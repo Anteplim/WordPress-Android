@@ -3,10 +3,11 @@ package org.wordpress.android.ui.accounts;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
+
+import androidx.fragment.app.Fragment;
 
 import org.wordpress.android.util.ActivityUtils;
 

@@ -1,16 +1,14 @@
 package org.wordpress.android.ui.pages
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.os.Parcelable
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.pages_list_fragment.*
 import org.wordpress.android.R
 import org.wordpress.android.WordPress
@@ -20,10 +18,10 @@ import org.wordpress.android.viewmodel.pages.SearchListViewModel
 import org.wordpress.android.widgets.RecyclerItemDecoration
 import javax.inject.Inject
 
-class SearchListFragment : Fragment() {
+class SearchListFragment : androidx.fragment.app.Fragment() {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: SearchListViewModel
-    private var linearLayoutManager: LinearLayoutManager? = null
+    private var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager? = null
 
     private val listStateKey = "list_state"
 
@@ -54,7 +52,7 @@ class SearchListFragment : Fragment() {
         super.onSaveInstanceState(outState)
     }
 
-    private fun initializeViewModels(activity: FragmentActivity) {
+    private fun initializeViewModels(activity: androidx.fragment.app.FragmentActivity) {
         val pagesViewModel = ViewModelProviders.of(activity, viewModelFactory).get(PagesViewModel::class.java)
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(SearchListViewModel::class.java)
@@ -64,7 +62,11 @@ class SearchListFragment : Fragment() {
     }
 
     private fun initializeViews(savedInstanceState: Bundle?) {
-        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+                activity,
+                androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
+                false
+        )
         savedInstanceState?.getParcelable<Parcelable>(listStateKey)?.let {
             layoutManager.onRestoreInstanceState(it)
         }

@@ -1,18 +1,14 @@
 package org.wordpress.android.ui.posts
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import org.wordpress.android.R
 import org.wordpress.android.WordPress
 import org.wordpress.android.fluxc.model.SiteModel
@@ -41,7 +37,7 @@ private const val EXTRA_POST_LIST_AUTHOR_FILTER = "post_list_author_filter"
 private const val EXTRA_POST_LIST_TYPE = "post_list_type"
 private const val MAX_INDEX_FOR_VISIBLE_ITEM_TO_KEEP_SCROLL_POSITION = 2
 
-class PostListFragment : Fragment() {
+class PostListFragment : androidx.fragment.app.Fragment() {
     @Inject internal lateinit var imageManager: ImageManager
     @Inject internal lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject internal lateinit var uiHelpers: UiHelpers
@@ -50,14 +46,14 @@ class PostListFragment : Fragment() {
     private var swipeToRefreshHelper: SwipeToRefreshHelper? = null
 
     private var swipeRefreshLayout: CustomSwipeRefreshLayout? = null
-    private var recyclerView: RecyclerView? = null
+    private var recyclerView: androidx.recyclerview.widget.RecyclerView? = null
     private var actionableEmptyView: ActionableEmptyView? = null
     private var progressLoadMore: ProgressBar? = null
 
     private lateinit var itemDecorationCompactLayout: RecyclerItemDecoration
     private lateinit var itemDecorationStandardLayout: RecyclerItemDecoration
 
-    private lateinit var nonNullActivity: FragmentActivity
+    private lateinit var nonNullActivity: androidx.fragment.app.FragmentActivity
     private lateinit var site: SiteModel
 
     private val postViewHolderConfig: PostViewHolderConfig by lazy {
@@ -169,7 +165,7 @@ class PostListFragment : Fragment() {
                 0,
                 context.resources.getDimensionPixelSize(R.dimen.list_divider_height)
         )
-        recyclerView?.layoutManager = LinearLayoutManager(context)
+        recyclerView?.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         recyclerView?.adapter = postListAdapter
 
         swipeToRefreshHelper = buildSwipeToRefreshHelper(swipeRefreshLayout) {
@@ -200,7 +196,7 @@ class PostListFragment : Fragment() {
         val recyclerViewState = recyclerView?.layoutManager?.onSaveInstanceState()
         postListAdapter.submitList(pagedListData)
         recyclerView?.post {
-            (recyclerView?.layoutManager as? LinearLayoutManager)?.let { layoutManager ->
+            (recyclerView?.layoutManager as? androidx.recyclerview.widget.LinearLayoutManager)?.let { layoutManager ->
                 if (layoutManager.findFirstVisibleItemPosition() < MAX_INDEX_FOR_VISIBLE_ITEM_TO_KEEP_SCROLL_POSITION) {
                     layoutManager.onRestoreInstanceState(recyclerViewState)
                 }

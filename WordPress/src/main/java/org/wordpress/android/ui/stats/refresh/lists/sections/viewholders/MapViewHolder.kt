@@ -2,8 +2,6 @@ package org.wordpress.android.ui.stats.refresh.lists.sections.viewholders
 
 import android.annotation.SuppressLint
 import android.net.http.SslError
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.SslErrorHandler
@@ -13,6 +11,7 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.FrameLayout.LayoutParams
+import androidx.core.content.ContextCompat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -66,7 +65,7 @@ class MapViewHolder(parent: ViewGroup) : BlockListItemViewHolder(
 
             if (webView != null) {
                 val params = webView.layoutParams as LayoutParams
-                val wrapperParams = itemView.layoutParams as RecyclerView.LayoutParams
+                val wrapperParams = itemView.layoutParams as androidx.recyclerview.widget.RecyclerView.LayoutParams
                 params.width = ViewGroup.LayoutParams.MATCH_PARENT
                 params.height = height
                 wrapperParams.width = ViewGroup.LayoutParams.MATCH_PARENT

@@ -1,8 +1,9 @@
 package org.wordpress.android.ui.stats.refresh.utils
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.view.View
+import androidx.appcompat.widget.ListPopupWindow
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -13,16 +14,15 @@ import org.wordpress.android.fluxc.store.StatsStore.InsightType
 import org.wordpress.android.fluxc.store.StatsStore.StatsType
 import org.wordpress.android.modules.BG_THREAD
 import org.wordpress.android.modules.UI_THREAD
-import org.wordpress.android.viewmodel.Event
-import javax.inject.Inject
-import javax.inject.Named
-import javax.inject.Singleton
-import android.support.v7.widget.ListPopupWindow
 import org.wordpress.android.ui.stats.refresh.lists.sections.insights.InsightsMenuAdapter
 import org.wordpress.android.ui.stats.refresh.lists.sections.insights.InsightsMenuAdapter.InsightsMenuItem
 import org.wordpress.android.ui.stats.refresh.lists.sections.insights.InsightsMenuAdapter.InsightsMenuItem.DOWN
 import org.wordpress.android.ui.stats.refresh.lists.sections.insights.InsightsMenuAdapter.InsightsMenuItem.REMOVE
 import org.wordpress.android.ui.stats.refresh.lists.sections.insights.InsightsMenuAdapter.InsightsMenuItem.UP
+import org.wordpress.android.viewmodel.Event
+import javax.inject.Inject
+import javax.inject.Named
+import javax.inject.Singleton
 
 @Singleton
 class ItemPopupMenuHandler

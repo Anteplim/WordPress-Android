@@ -3,7 +3,6 @@ package org.wordpress.android.ui.accounts.signup;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -14,6 +13,8 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.wordpress.android.R;
 import org.wordpress.android.WordPress;

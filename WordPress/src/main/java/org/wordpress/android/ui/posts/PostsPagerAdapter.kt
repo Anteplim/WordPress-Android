@@ -1,7 +1,5 @@
 package org.wordpress.android.ui.posts
 
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
 import android.view.ViewGroup
 import org.wordpress.android.WordPress
 import org.wordpress.android.fluxc.model.SiteModel
@@ -11,8 +9,8 @@ class PostsPagerAdapter(
     private val pages: List<PostListType>,
     private val site: SiteModel,
     private val authorFilter: AuthorFilterSelection,
-    val fm: FragmentManager
-) : FragmentStatePagerAdapter(fm) {
+    val fm: androidx.fragment.app.FragmentManager
+) : androidx.fragment.app.FragmentStatePagerAdapter(fm) {
     private val listFragments = mutableMapOf<Int, WeakReference<PostListFragment>>()
 
     override fun getCount(): Int = pages.size

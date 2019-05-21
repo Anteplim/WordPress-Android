@@ -1,8 +1,7 @@
 package org.wordpress.android.ui.stats.refresh.lists.viewholders
 
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.wordpress.android.R
 import org.wordpress.android.fluxc.store.StatsStore
 import org.wordpress.android.ui.stats.refresh.lists.sections.BlockListAdapter
@@ -13,12 +12,16 @@ class LoadingViewHolder(parent: ViewGroup, val imageManager: ImageManager) : Bas
         parent,
         R.layout.stats_loading_view
 ) {
-    private val list: RecyclerView = itemView.findViewById(R.id.stats_block_list)
+    private val list: androidx.recyclerview.widget.RecyclerView = itemView.findViewById(R.id.stats_block_list)
     override fun bind(statsType: StatsStore.StatsType?, items: List<BlockListItem>) {
         super.bind(statsType, items)
         list.isNestedScrollingEnabled = false
         if (list.adapter == null) {
-            list.layoutManager = LinearLayoutManager(list.context, LinearLayoutManager.VERTICAL, false)
+            list.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+                    list.context,
+                    androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
+                    false
+            )
             list.adapter = BlockListAdapter(imageManager)
         }
         (list.adapter as BlockListAdapter).update(items)

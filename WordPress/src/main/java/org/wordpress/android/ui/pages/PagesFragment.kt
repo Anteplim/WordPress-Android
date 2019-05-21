@@ -1,19 +1,9 @@
 package org.wordpress.android.ui.pages
 
 import android.app.Activity
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager.OnPageChangeListener
-import android.support.v7.widget.SearchView
 import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.Menu
@@ -25,6 +15,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import com.google.android.material.snackbar.Snackbar
 import de.greenrobot.event.EventBus
 import kotlinx.android.synthetic.main.pages_fragment.*
 import org.greenrobot.eventbus.Subscribe
@@ -60,7 +56,7 @@ import org.wordpress.android.widgets.WPSnackbar
 import java.lang.ref.WeakReference
 import javax.inject.Inject
 
-class PagesFragment : Fragment() {
+class PagesFragment : androidx.fragment.app.Fragment() {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: PagesViewModel
     private lateinit var swipeToRefreshHelper: SwipeToRefreshHelper
@@ -145,7 +141,7 @@ class PagesFragment : Fragment() {
         viewModel.onPageParentSet(pageId, parentId)
     }
 
-    private fun initializeViews(activity: FragmentActivity) {
+    private fun initializeViews(activity: androidx.fragment.app.FragmentActivity) {
         pagesPager.adapter = PagesPagerAdapter(activity, childFragmentManager)
         tabLayout.setupWithViewPager(pagesPager)
 
@@ -238,7 +234,7 @@ class PagesFragment : Fragment() {
         })
     }
 
-    private fun initializeViewModels(activity: FragmentActivity, savedInstanceState: Bundle?) {
+    private fun initializeViewModels(activity: androidx.fragment.app.FragmentActivity, savedInstanceState: Bundle?) {
         viewModel = ViewModelProviders.of(activity, viewModelFactory).get(PagesViewModel::class.java)
 
         setupObservers(activity)
@@ -254,7 +250,7 @@ class PagesFragment : Fragment() {
         viewModel.start(site)
     }
 
-    private fun setupObservers(activity: FragmentActivity) {
+    private fun setupObservers(activity: androidx.fragment.app.FragmentActivity) {
         viewModel.listState.observe(this, Observer {
             refreshProgressBars(it)
         })
@@ -404,7 +400,7 @@ class PagesFragment : Fragment() {
     }
 }
 
-class PagesPagerAdapter(val context: Context, val fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class PagesPagerAdapter(val context: Context, val fm: androidx.fragment.app.FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(fm) {
     companion object {
         val pageTypes = listOf(PUBLISHED, DRAFTS, SCHEDULED, TRASHED)
     }
@@ -413,7 +409,7 @@ class PagesPagerAdapter(val context: Context, val fm: FragmentManager) : Fragmen
 
     override fun getCount(): Int = pageTypes.size
 
-    override fun getItem(position: Int): Fragment {
+    override fun getItem(position: Int): androidx.fragment.app.Fragment {
         val fragment = PageListFragment.newInstance(pageTypes[position])
         listFragments[pageTypes[position]] = WeakReference(fragment)
         return fragment

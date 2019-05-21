@@ -1,8 +1,6 @@
 package org.wordpress.android.ui.stats.refresh.utils
 
 import android.content.Context
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 
 /**
  * This class should be used only when the RecyclerView's height is set to wrap_content.
@@ -16,7 +14,7 @@ class WrappingLinearLayoutManager(
     context: Context?,
     orientation: Int,
     reverseLayout: Boolean
-) : LinearLayoutManager(
+) : androidx.recyclerview.widget.LinearLayoutManager(
         context,
         orientation,
         reverseLayout
@@ -32,8 +30,8 @@ class WrappingLinearLayoutManager(
     }
 
     override fun onMeasure(
-        recycler: RecyclerView.Recycler,
-        state: RecyclerView.State,
+        recycler: androidx.recyclerview.widget.RecyclerView.Recycler,
+        state: androidx.recyclerview.widget.RecyclerView.State,
         widthSpec: Int,
         heightSpec: Int
     ) {
@@ -45,7 +43,7 @@ class WrappingLinearLayoutManager(
         }
     }
 
-    override fun onItemsRemoved(recyclerView: RecyclerView, positionStart: Int, itemCount: Int) {
+    override fun onItemsRemoved(recyclerView: androidx.recyclerview.widget.RecyclerView, positionStart: Int, itemCount: Int) {
         super.onItemsRemoved(recyclerView, positionStart, itemCount)
         postOnAnimation {
             recyclerView.itemAnimator?.isRunning {

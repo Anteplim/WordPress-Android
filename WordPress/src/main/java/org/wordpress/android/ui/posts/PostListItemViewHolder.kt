@@ -1,7 +1,5 @@
 package org.wordpress.android.ui.posts
 
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -14,6 +12,7 @@ import android.widget.PopupMenu
 import android.widget.ProgressBar
 import androidx.annotation.ColorRes
 import androidx.annotation.LayoutRes
+import androidx.core.content.ContextCompat
 import org.wordpress.android.R
 import org.wordpress.android.ui.reader.utils.ReaderUtils
 import org.wordpress.android.ui.utils.UiHelpers
@@ -36,7 +35,7 @@ sealed class PostListItemViewHolder(
     parent: ViewGroup,
     private val config: PostViewHolderConfig,
     private val uiHelpers: UiHelpers
-) : RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(layout, parent, false)) {
+) : androidx.recyclerview.widget.RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(layout, parent, false)) {
     private val featuredImageView: ImageView = itemView.findViewById(R.id.image_featured)
     private val titleTextView: WPTextView = itemView.findViewById(R.id.title)
     private val dateTextView: WPTextView = itemView.findViewById(R.id.date)

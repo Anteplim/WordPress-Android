@@ -108,7 +108,7 @@
                     android:gravity="center"
                     android:text="@string/site_creation_creating_failed_extended"/>
 
-                <android.support.v7.widget.AppCompatButton
+                <androidx.appcompat.widget.AppCompatButton
                     style="@style/WordPress.Button.Primary"
                     android:id="@+id/button_retry"
                     android:layout_width="wrap_content"
@@ -182,14 +182,14 @@
             android:padding="@dimen/margin_large"
             android:clipToPadding="false">
 
-            <android.support.v7.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:theme="@style/WordPress.Button"
                 android:id="@+id/secondary_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/site_creation_epilogue_configure"/>
 
-            <android.support.v7.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
                 style="@style/WordPress.Button.Primary"
                 android:id="@+id/primary_button"
                 android:layout_width="match_parent"

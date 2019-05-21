@@ -1,17 +1,6 @@
 package org.wordpress.android.ui.main
 
 import android.content.Context
-import android.support.annotation.DrawableRes
-import android.support.annotation.IdRes
-import android.support.annotation.StringRes
-import android.support.design.bottomnavigation.LabelVisibilityMode
-import android.support.design.internal.BottomNavigationItemView
-import android.support.design.internal.BottomNavigationMenuView
-import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.BottomNavigationView.OnNavigationItemReselectedListener
-import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.util.AttributeSet
 import android.util.SparseArray
 import android.view.LayoutInflater
@@ -20,6 +9,15 @@ import android.view.View
 import android.view.animation.Animation
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.DrawableRes
+import androidx.annotation.IdRes
+import androidx.annotation.StringRes
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemReselectedListener
+import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import org.wordpress.android.R
 import org.wordpress.android.ui.main.WPMainActivity.OnScrollToTopListener
 import org.wordpress.android.ui.notifications.NotificationsListFragment
@@ -40,11 +38,11 @@ class WPMainNavigationView @JvmOverloads constructor(
 ) : BottomNavigationView(context, attrs, defStyleAttr),
         OnNavigationItemSelectedListener, OnNavigationItemReselectedListener {
     private lateinit var navAdapter: NavAdapter
-    private lateinit var fragmentManager: FragmentManager
+    private lateinit var fragmentManager: androidx.fragment.app.FragmentManager
     private lateinit var pageListener: OnPageListener
     private var prevPosition = -1
 
-    val activeFragment: Fragment?
+    val activeFragment: androidx.fragment.app.Fragment?
         get() = navAdapter.getFragment(currentPosition)
 
     var currentPosition: Int
@@ -56,7 +54,7 @@ class WPMainNavigationView @JvmOverloads constructor(
         fun onNewPostButtonClicked()
     }
 
-    fun init(fm: FragmentManager, listener: OnPageListener) {
+    fun init(fm: androidx.fragment.app.FragmentManager, listener: OnPageListener) {
         fragmentManager = fm
         pageListener = listener
 
@@ -304,10 +302,10 @@ class WPMainNavigationView @JvmOverloads constructor(
     }
 
     private inner class NavAdapter {
-        private val mFragments = SparseArray<Fragment>(NUM_PAGES)
+        private val mFragments = SparseArray<androidx.fragment.app.Fragment>(NUM_PAGES)
 
-        private fun createFragment(position: Int): Fragment? {
-            val fragment: Fragment = when (position) {
+        private fun createFragment(position: Int): androidx.fragment.app.Fragment? {
+            val fragment: androidx.fragment.app.Fragment = when (position) {
                 PAGE_MY_SITE -> MySiteFragment.newInstance()
                 PAGE_READER -> ReaderPostListFragment.newInstance()
                 PAGE_ME -> MeFragment.newInstance()
@@ -319,7 +317,7 @@ class WPMainNavigationView @JvmOverloads constructor(
             return fragment
         }
 
-        internal fun getFragment(position: Int): Fragment? {
+        internal fun getFragment(position: Int): androidx.fragment.app.Fragment? {
             if (isValidPosition(position) && mFragments.get(position) != null) {
                 return mFragments.get(position)
             }

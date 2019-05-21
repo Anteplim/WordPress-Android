@@ -1,17 +1,16 @@
 package org.wordpress.android.ui.domains
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.domain_suggestions_fragment.*
 import org.wordpress.android.R
 import org.wordpress.android.WordPress
@@ -22,7 +21,7 @@ import org.wordpress.android.util.ToastUtils
 import org.wordpress.android.viewmodel.domains.DomainSuggestionsViewModel
 import javax.inject.Inject
 
-class DomainSuggestionsFragment : Fragment() {
+class DomainSuggestionsFragment : androidx.fragment.app.Fragment() {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: DomainSuggestionsViewModel
 
@@ -53,7 +52,11 @@ class DomainSuggestionsFragment : Fragment() {
     }
 
     private fun setupViews() {
-        domain_suggestions_list.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        domain_suggestions_list.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+                activity,
+                androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
+                false
+        )
         domain_suggestions_list.setEmptyView(actionableEmptyView)
         chose_domain_button.setOnClickListener {
             val selectedDomain = viewModel.selectedSuggestion.value

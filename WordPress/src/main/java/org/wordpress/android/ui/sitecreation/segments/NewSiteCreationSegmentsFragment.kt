@@ -1,18 +1,17 @@
 package org.wordpress.android.ui.sitecreation.segments
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
-import android.support.annotation.LayoutRes
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.annotation.LayoutRes
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.wordpress.android.R
 import org.wordpress.android.WordPress
 import org.wordpress.android.ui.accounts.HelpActivity
@@ -27,8 +26,8 @@ import javax.inject.Inject
 private const val KEY_LIST_STATE = "list_state"
 
 class NewSiteCreationSegmentsFragment : NewSiteCreationBaseFormFragment() {
-    private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var linearLayoutManager: androidx.recyclerview.widget.LinearLayoutManager
+    private lateinit var recyclerView: androidx.recyclerview.widget.RecyclerView
     private lateinit var viewModel: NewSiteCreationSegmentsViewModel
 
     private lateinit var errorLayout: ViewGroup
@@ -74,7 +73,11 @@ class NewSiteCreationSegmentsFragment : NewSiteCreationBaseFormFragment() {
 
     private fun initRecyclerView(rootView: ViewGroup) {
         recyclerView = rootView.findViewById(R.id.recycler_view)
-        val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        val layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+                activity,
+                androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
+                false
+        )
         linearLayoutManager = layoutManager
         recyclerView.layoutManager = linearLayoutManager
         initAdapter()

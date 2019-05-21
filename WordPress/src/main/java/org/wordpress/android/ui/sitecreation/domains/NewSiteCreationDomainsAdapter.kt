@@ -1,9 +1,9 @@
 package org.wordpress.android.ui.sitecreation.domains
 
-import android.support.annotation.MainThread
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView.Adapter
 import android.view.ViewGroup
+import androidx.annotation.MainThread
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView.Adapter
 import org.wordpress.android.ui.sitecreation.domains.NewSiteCreationDomainViewHolder.DomainSuggestionErrorViewHolder
 import org.wordpress.android.ui.sitecreation.domains.NewSiteCreationDomainViewHolder.DomainSuggestionItemViewHolder
 import org.wordpress.android.ui.sitecreation.domains.NewSiteCreationDomainsViewModel.DomainsListItemUiState

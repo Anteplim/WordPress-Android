@@ -1,17 +1,16 @@
 package org.wordpress.android.ui
 
 import android.app.Activity
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.jetpack_remote_install_fragment.*
 import org.wordpress.android.R
 import org.wordpress.android.WordPress
@@ -25,7 +24,7 @@ import org.wordpress.android.ui.accounts.LoginActivity
 import org.wordpress.android.util.AppLog
 import javax.inject.Inject
 
-class JetpackRemoteInstallFragment : Fragment() {
+class JetpackRemoteInstallFragment : androidx.fragment.app.Fragment() {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: JetpackRemoteInstallViewModel
     override fun onCreate(savedInstanceState: Bundle?) {

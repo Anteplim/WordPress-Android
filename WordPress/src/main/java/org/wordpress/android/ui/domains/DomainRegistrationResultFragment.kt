@@ -1,17 +1,16 @@
 package org.wordpress.android.ui.domains
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.text.HtmlCompat
-import android.support.v4.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
+import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import kotlinx.android.synthetic.main.domain_registration_result_fragment.*
 import org.wordpress.android.R
 import org.wordpress.android.WordPress
 
-class DomainRegistrationResultFragment : Fragment() {
+class DomainRegistrationResultFragment : androidx.fragment.app.Fragment() {
     private var domainName: String? = null
 
     companion object {

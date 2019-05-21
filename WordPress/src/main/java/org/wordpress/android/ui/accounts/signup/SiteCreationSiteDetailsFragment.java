@@ -2,8 +2,6 @@ package org.wordpress.android.ui.accounts.signup;
 
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -11,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ScrollView;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
 
 import org.wordpress.android.R;
 import org.wordpress.android.analytics.AnalyticsTracker;

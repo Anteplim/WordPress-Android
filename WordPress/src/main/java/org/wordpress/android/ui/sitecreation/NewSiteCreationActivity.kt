@@ -1,15 +1,14 @@
 package org.wordpress.android.ui.sitecreation
 
 import android.app.Activity
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import org.wordpress.android.R
 import org.wordpress.android.WordPress
 import org.wordpress.android.ui.ActivityLauncher
@@ -182,7 +181,7 @@ class NewSiteCreationActivity : AppCompatActivity(),
         }
     }
 
-    private fun slideInFragment(fragment: Fragment, tag: String) {
+    private fun slideInFragment(fragment: androidx.fragment.app.Fragment, tag: String) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         if (supportFragmentManager.findFragmentById(R.id.fragment_container) != null) {
             // add to back stack and animate all screen except of the first one

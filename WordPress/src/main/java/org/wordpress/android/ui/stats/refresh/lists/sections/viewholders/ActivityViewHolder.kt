@@ -1,11 +1,10 @@
 package org.wordpress.android.ui.stats.refresh.lists.sections.viewholders
 
 import android.graphics.Rect
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.stats_block_single_activity.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -70,27 +69,27 @@ class ActivityViewHolder(val parent: ViewGroup) : BlockListItemViewHolder(
         }
     }
 
-    private fun drawBlock(recyclerView: RecyclerView, boxes: List<Box>) {
+    private fun drawBlock(recyclerView: androidx.recyclerview.widget.RecyclerView, boxes: List<Box>) {
         if (recyclerView.adapter == null) {
             recyclerView.adapter = MonthActivityAdapter()
         }
         if (recyclerView.layoutManager == null) {
-            recyclerView.layoutManager = GridLayoutManager(
+            recyclerView.layoutManager = androidx.recyclerview.widget.GridLayoutManager(
                     recyclerView.context,
                     SPAN_COUNT,
-                    GridLayoutManager.HORIZONTAL,
+                    androidx.recyclerview.widget.GridLayoutManager.HORIZONTAL,
                     false
             )
         }
         if (recyclerView.itemDecorationCount == 0) {
             val offsets = recyclerView.resources.getDimensionPixelSize(R.dimen.stats_activity_spacing)
             recyclerView.addItemDecoration(
-                    object : RecyclerView.ItemDecoration() {
+                    object : androidx.recyclerview.widget.RecyclerView.ItemDecoration() {
                         override fun getItemOffsets(
                             outRect: Rect,
                             view: View,
-                            parent: RecyclerView,
-                            state: RecyclerView.State
+                            parent: androidx.recyclerview.widget.RecyclerView,
+                            state: androidx.recyclerview.widget.RecyclerView.State
                         ) {
                             super.getItemOffsets(outRect, view, parent, state)
                             outRect.set(offsets, offsets, offsets, offsets)

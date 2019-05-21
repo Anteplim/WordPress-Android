@@ -1,8 +1,5 @@
 package org.wordpress.android.ui.pages
 
-import android.support.annotation.LayoutRes
-import android.support.v4.widget.CompoundButtonCompat
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +9,8 @@ import android.widget.ImageView.ScaleType
 import android.widget.PopupMenu
 import android.widget.RadioButton
 import android.widget.TextView
+import androidx.annotation.LayoutRes
+import androidx.core.widget.CompoundButtonCompat
 import org.wordpress.android.R
 import org.wordpress.android.ui.ActionableEmptyView
 import org.wordpress.android.ui.pages.PageItem.Divider
@@ -27,7 +26,7 @@ import org.wordpress.android.util.image.ImageType
 import java.util.Date
 
 sealed class PageItemViewHolder(internal val parent: ViewGroup, @LayoutRes layout: Int) :
-        RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(layout, parent, false)) {
+        androidx.recyclerview.widget.RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(layout, parent, false)) {
     abstract fun onBind(pageItem: PageItem)
 
     class PageViewHolder(

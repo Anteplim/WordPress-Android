@@ -1,6 +1,5 @@
 package org.wordpress.android.ui.posts
 
-import android.support.v4.app.FragmentActivity
 import org.wordpress.android.fluxc.model.PostModel
 import org.wordpress.android.fluxc.model.SiteModel
 import org.wordpress.android.push.NativeNotificationsUtils
@@ -23,7 +22,7 @@ sealed class PostListAction {
     class DismissPendingNotification(val pushId: Int) : PostListAction()
 }
 
-fun handlePostListAction(activity: FragmentActivity, action: PostListAction) {
+fun handlePostListAction(activity: androidx.fragment.app.FragmentActivity, action: PostListAction) {
     when (action) {
         is PostListAction.EditPost -> {
             ActivityLauncher.editPostOrPageForResult(activity, action.site, action.post)

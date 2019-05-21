@@ -1,7 +1,6 @@
 package org.wordpress.android.ui.plans
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +17,7 @@ import org.wordpress.android.util.image.ImageManager
 import org.wordpress.android.util.image.ImageType
 import javax.inject.Inject
 
-class PlanDetailsFragment : Fragment(), FullScreenDialogContent {
+class PlanDetailsFragment : androidx.fragment.app.Fragment(), FullScreenDialogContent {
     private var plan: PlanOffersModel? = null
     @Inject lateinit var imageManager: ImageManager
     private lateinit var dialogController: FullScreenDialogController

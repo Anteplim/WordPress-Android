@@ -1,6 +1,6 @@
 package org.wordpress.android.ui.stats.refresh.lists
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import org.wordpress.android.R.string
 import org.wordpress.android.fluxc.store.StatsStore.PostDetailType
 import org.wordpress.android.fluxc.store.StatsStore.StatsType

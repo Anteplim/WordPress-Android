@@ -1,15 +1,14 @@
 package org.wordpress.android.ui.posts
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.annotation.NonNull
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.NonNull
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.history_list_fragment.*
 import org.wordpress.android.R
 import org.wordpress.android.WordPress
@@ -24,7 +23,7 @@ import org.wordpress.android.viewmodel.history.HistoryViewModel
 import org.wordpress.android.viewmodel.history.HistoryViewModel.HistoryListStatus
 import javax.inject.Inject
 
-class HistoryListFragment : Fragment() {
+class HistoryListFragment : androidx.fragment.app.Fragment() {
     private lateinit var swipeToRefreshHelper: SwipeToRefreshHelper
     private lateinit var viewModel: HistoryViewModel
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -65,7 +64,11 @@ class HistoryListFragment : Fragment() {
 
         val nonNullActivity = checkNotNull(activity)
 
-        empty_recycler_view.layoutManager = LinearLayoutManager(nonNullActivity, LinearLayoutManager.VERTICAL, false)
+        empty_recycler_view.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+                nonNullActivity,
+                androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
+                false
+        )
         empty_recycler_view.setEmptyView(actionable_empty_view)
         actionable_empty_view.button.setText(R.string.button_retry)
         actionable_empty_view.button.setOnClickListener {

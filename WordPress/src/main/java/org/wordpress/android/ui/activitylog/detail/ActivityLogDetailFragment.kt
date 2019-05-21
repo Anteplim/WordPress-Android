@@ -1,14 +1,13 @@
 package org.wordpress.android.ui.activitylog.detail
 
 import android.app.Activity.RESULT_OK
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_log_item_detail.*
 import org.wordpress.android.R
 import org.wordpress.android.WordPress
@@ -25,7 +24,7 @@ import org.wordpress.android.viewmodel.activitylog.ACTIVITY_LOG_REWIND_ID_KEY
 import org.wordpress.android.viewmodel.activitylog.ActivityLogDetailViewModel
 import javax.inject.Inject
 
-class ActivityLogDetailFragment : Fragment() {
+class ActivityLogDetailFragment : androidx.fragment.app.Fragment() {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject lateinit var imageManager: ImageManager
     @Inject lateinit var notificationsUtilsWrapper: NotificationsUtilsWrapper

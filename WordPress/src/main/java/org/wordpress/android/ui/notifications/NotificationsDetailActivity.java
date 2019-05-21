@@ -4,18 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import org.jetbrains.annotations.NotNull;
 import org.wordpress.android.R;
@@ -63,8 +64,7 @@ import static org.wordpress.android.models.Note.NOTE_COMMENT_LIKE_TYPE;
 import static org.wordpress.android.models.Note.NOTE_COMMENT_TYPE;
 import static org.wordpress.android.models.Note.NOTE_FOLLOW_TYPE;
 import static org.wordpress.android.models.Note.NOTE_LIKE_TYPE;
-import static org.wordpress.android.ui.notifications.services.NotificationsUpdateServiceStarter
-        .IS_TAPPED_ON_NOTIFICATION;
+import static org.wordpress.android.ui.notifications.services.NotificationsUpdateServiceStarter.IS_TAPPED_ON_NOTIFICATION;
 
 public class NotificationsDetailActivity extends AppCompatActivity implements
         CommentActions.OnNoteCommentActionListener,
