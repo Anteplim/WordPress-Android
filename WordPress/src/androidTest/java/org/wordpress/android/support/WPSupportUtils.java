@@ -129,6 +129,17 @@ public class WPSupportUtils {
                 .perform(closeSoftKeyboard());
     }
 
+    public static void populateTextFieldWithin(Integer elementID, String text) {
+        waitForElementToBeDisplayed(elementID);
+
+        onView(allOf(
+                isDescendantOfA(withId(elementID)),
+                withId(R.id.input)
+        ))
+        .perform(replaceText(text))
+        .perform(closeSoftKeyboard());
+    }
+
     public static void populateTextField(ViewInteraction element, String text) {
         waitForElementToBeDisplayed(element);
         element.perform(replaceText(text))
